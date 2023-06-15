@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'action.yml'
+      - '.github/workflows/test.yml'
 
   workflow_dispatch:
 
@@ -13,7 +14,7 @@ jobs:
     name: A job to run test
     steps:
     - name: Clone repository manually
-      run: git clone https://github.com/MasterCloudApps/4.2.Integracion-y-entrega-continua-ejem-1 .
+      run: git clone https://github.com/MasterCloudApps/Template-CI-CD .
     - name: Checkout action
       uses: actions/checkout@v3
       with:
@@ -31,4 +32,4 @@ jobs:
         exclude: 'selenium'
     - name: Get project version
       run: |
-        [[ ${{ steps.maven-gha.outputs.project-version }} == "0.0.1-SNAPSHOT" ]] && echo "Works" || ( echo "Fail" && exit 1 )
+        [[ ${{ steps.maven-gha.outputs.project-version }} == "0.1.0" ]] && echo "Works" || ( echo "Fail" && exit 1 )
